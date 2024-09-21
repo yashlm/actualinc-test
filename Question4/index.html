@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List Application</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">To Do List Application</h1>
+    <div class="row mt-4">
+      <div class="col-md-12 mb-3">
+        <button id="sort-priority-btn" class="btn btn-info">Sort by Priority</button>
+        <button id="sort-date-btn" class="btn btn-info">Sort by End Date</button>
+      </div>
+      <div class="col-md-4">
+        <h3>To Do</h3>
+        <div id="to-do-list"></div>
+      </div>
+      <div class="col-md-4">
+        <h3>Doing</h3>
+        <div id="doing-list"></div>
+      </div>
+      <div class="col-md-4">
+        <h3>Done</h3>
+        <div id="done-list"></div>
+      </div>
+    </div>
+    <button id="add-task-btn" class="btn btn-primary mt-4">Add Task</button>
+
+    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="taskModalLabel">Add/Edit Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="task-form">
+              <div class="form-group">
+                <label for="task-title">Title</label>
+                <input type="text" class="form-control" id="task-title" required>
+              </div>
+              <div class="form-group">
+                <label for="task-description">Description</label>
+                <textarea class="form-control" id="task-description" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="task-priority">Priority (1 - High, 3 - Low)</label>
+                <input type="number" class="form-control" id="task-priority" min="1" max="3" required>
+              </div>
+              <div class="form-group">
+                <label for="task-end-date">End Date and Time</label>
+                <input type="datetime-local" class="form-control" id="task-end-date" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Task</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
