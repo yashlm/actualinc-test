@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Finish project report",
+    "description": "Complete the final report for the project.",
+    "priority": 1,
+    "endDate": "2024-09-30T17:00",
+    "status": "to-do"
+  },
+  {
+    "title": "Prepare for presentation",
+    "description": "Create slides and practice for the upcoming presentation.",
+    "priority": 2,
+    "endDate": "2024-10-02T12:00",
+    "status": "doing"
+  },
+  {
+    "title": "Submit assignment",
+    "description": "Submit the biology assignment by the deadline.",
+    "priority": 3,
+    "endDate": "2024-09-29T23:59",
+    "status": "done"
+  },
+  {
+    "title": "Grocery shopping",
+    "description": "Buy groceries for the week.",
+    "priority": 4,
+    "endDate": "2024-10-01T18:00",
+    "status": "to-do"
+  },
+  {
+    "title": "Read a book",
+    "description": "Finish reading 'The Great Gatsby'.",
+    "priority": 5,
+    "endDate": "2024-10-05T20:00",
+    "status": "to-do"
+  },
+  {
+    "title": "Exercise",
+    "description": "Go for a run or do yoga.",
+    "priority": 3,
+    "endDate": "2024-09-28T08:00",
+    "status": "doing"
+  },
+  {
+    "title": "Call mom",
+    "description": "Catch up with mom over the phone.",
+    "priority": 2,
+    "endDate": "2024-09-27T15:00",
+    "status": "done"
+  },
+  {
+    "title": "Plan weekend trip",
+    "description": "Organize details for the trip with friends.",
+    "priority": 1,
+    "endDate": "2024-10-03T10:00",
+    "status": "to-do"
+  },
+  {
+    "title": "Update resume",
+    "description": "Revise and update resume for job applications.",
+    "priority": 2,
+    "endDate": "2024-09-30T23:59",
+    "status": "doing"
+  },
+  {
+    "title": "Learn new programming language",
+    "description": "Start learning Go programming.",
+    "priority": 4,
+    "endDate": "2024-10-10T17:00",
+    "status": "to-do"
+  }
+]

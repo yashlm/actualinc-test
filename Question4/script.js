@@ -197,3 +197,18 @@ document.getElementById('add-task-btn').onclick = () => {
   modal.classList.add('show');
   modal.style.display = 'block';
 };
+
+async function loadTasks() {
+  try {
+    const response = await fetch('tasks.json');
+    if (!response.ok) throw new Error('Network response was not ok');
+    
+    const data = await response.json();
+    tasks = data; 
+    renderTasks(); 
+  } catch (error) {
+    console.error('Error loading tasks:', error);
+  }
+}
+
+window.onload = loadTasks;
