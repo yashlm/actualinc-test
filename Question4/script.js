@@ -51,7 +51,7 @@ function saveTask(event) {
   const task = {
     title,
     description,
-    priority,
+    priority: parseInt(priority),
     endDate,
     status: 'to-do',
   };
@@ -113,15 +113,81 @@ function closeModal() {
   modal.style.display = 'none';
 }
 
-document.getElementById('sort-priority-btn').onclick = () => {
-  tasks.sort((a, b) => a.priority - b.priority);
-  renderTasks();
-};
-
-document.getElementById('sort-date-btn').onclick = () => {
-  tasks.sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
-  renderTasks();
-};
+document.getElementById('sort-to-do-priority').onclick = () => {
+    const sortedTasks = tasks.filter(task => task.status === 'to-do')
+                              .sort((a, b) => a.priority - b.priority);
+    renderFilteredTasks(sortedTasks, 'to-do');
+  };
+  
+  document.getElementById('sort-to-do-date').onclick = () => {
+    const sortedTasks = tasks.filter(task => task.status === 'to-do')
+                              .sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
+    renderFilteredTasks(sortedTasks, 'to-do');
+  };
+  
+  document.getElementById('sort-doing-priority').onclick = () => {
+    const sortedTasks = tasks.filter(task => task.status === 'doing')
+                              .sort((a, b) => a.priority - b.priority);
+    renderFilteredTasks(sortedTasks, 'doing');
+  };
+  
+  document.getElementById('sort-doing-date').onclick = () => {
+    const sortedTasks = tasks.filter(task => task.status === 'doing')
+                              .sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
+    renderFilteredTasks(sortedTasks, 'doing');
+  };
+  
+  document.getElementById('sort-done-priority').onclick = () => {
+    const sortedTasks = tasks.filter(task => task.status === 'done')
+                              .sort((a, b) => a.priority - b.priority);
+    renderFilteredTasks(sortedTasks, 'done');
+  };
+  
+  document.getElementById('sort-done-date').onclick = () => {
+    const sortedTasks = tasks.filter(task => task.status === 'done')
+                              .sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
+    renderFilteredTasks(sortedTasks, 'done');
+  };
+  
+  function renderFilteredTasks(sortedTasks, status) {
+    const list = document.getElementById(`${status}-list`);
+    list.innerHTML = ''; // Clear current list
+    sortedTasks.forEach(task => {
+      const taskElement = document.createElement('div');
+      taskElement.classList.add('task');
+      taskElement.innerHTML = `
+        <h4>${task.title}</h4>
+        <p>${task.description}</p>
+        <small>Priority: ${task.priority}</small>
+        <small>End Date: ${new Date(task.endDate).toLocaleString()}</small>
+        <br>
+        ${generateActionButtons(task)}
+      `;
+      list.appendChild(taskElement);
+    });
+  }
+  
+  function generateActionButtons(task) {
+    const index = tasks.indexOf(task);
+    switch (task.status) {
+      case 'to-do':
+        return `
+          <button class="btn btn-success btn-sm" onclick="markAsDoing(${index})">Mark as Doing</button>
+          <button class="btn btn-info btn-sm" onclick="editTask(${index})">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})">Delete</button>`;
+      case 'doing':
+        return `
+          <button class="btn btn-success btn-sm" onclick="markAsDone(${index})">Mark as Done</button>
+          <button class="btn btn-info btn-sm" onclick="editTask(${index})">Edit</button>
+          <button class="btn btn-secondary btn-sm" onclick="markAsToDo(${index})">Mark as To-Do</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})">Delete</button>`;
+      case 'done':
+        return `
+          <button class="btn btn-secondary btn-sm" onclick="markAsToDo(${index})">Mark as To-Do</button>
+          <button class="btn btn-info btn-sm" onclick="editTask(${index})">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})">Delete</button>`;
+    }
+  }
 
 document.getElementById('add-task-btn').onclick = () => {
   currentTaskIndex = -1; 
